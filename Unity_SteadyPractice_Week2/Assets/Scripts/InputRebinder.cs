@@ -1,6 +1,8 @@
+ï»¿using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,27 +14,30 @@ public class InputRebinder : MonoBehaviour
 
     void Start()
     {
-        // (¿Ï·á) [±¸Çö»çÇ× 1] actionAsset¿¡¼­ Space ¾×¼ÇÀ» Ã£°í È°¼ºÈ­ÇÕ´Ï´Ù.
-        spaceAction = new InputAction(binding: "<Keyboard>/space");
+        // (ì™„ë£Œ) [êµ¬í˜„ì‚¬í•­ 1] actionAssetì—ì„œ Space ì•¡ì…˜ì„ ì°¾ê³  í™œì„±í™”í•©ë‹ˆë‹¤.
+        spaceAction = actionAsset.FindAction("Space");
+
+        // Space ì•¡ì…˜ í™œì„±í™”
+        spaceAction.Enable();
     }
 
-    // (¿Ï·á) [±¸Çö»çÇ× 2] ContextMenu ¾îÆ®¸®ºäÆ®¸¦ È°¿ëÇØ¼­ ÀÎ½ºÆåÅÍÃ¢¿¡¼­ Àû¿ëÇÒ ¼ö ÀÖµµ·Ï ÇÔ
+    // (ì™„ë£Œ) [êµ¬í˜„ì‚¬í•­ 2] ContextMenu ì–´íŠ¸ë¦¬ë·°íŠ¸ë¥¼ í™œìš©í•´ì„œ ì¸ìŠ¤í™í„°ì°½ì—ì„œ ì ìš©í•  ìˆ˜ ìˆë„ë¡ í•¨
 
     void OnEnable()
     {
-        // Esc Å°¿¡ ´ëÇÑ ¾×¼Ç »ı¼º
+        // Esc í‚¤ì— ëŒ€í•œ ì•¡ì…˜ ìƒì„±
         escapeAction = new InputAction(binding: "<Keyboard>/escape");
 
-        // Esc Å° ÀÔ·Â ÀÌº¥Æ® µî·Ï
+        // Esc í‚¤ ì…ë ¥ ì´ë²¤íŠ¸ ë“±ë¡
         escapeAction.performed += OnEscapePressed;
 
-        // ¾×¼Ç È°¼ºÈ­
+        // ì•¡ì…˜ í™œì„±í™”
         escapeAction.Enable();
     }
 
     private void OnEscapePressed(InputAction.CallbackContext context)
     {
-        // Esc Å° ´­·¶À» ¶§ ½ÇÇà
+        // Esc í‚¤ ëˆŒë €ì„ ë•Œ ì‹¤í–‰
         RebindSpaceToEscape();
     }
 
@@ -40,14 +45,15 @@ public class InputRebinder : MonoBehaviour
     {
         if (spaceAction == null)
             return;
-        actionAsset.FindAction("Sapce").ApplyBindingOverride("<Keyboard>/escape");
+        actionAsset.FindAction("Space").ApplyBindingOverride("<Keyboard>/escape");
 
         Debug.Log("Done!");
     }
 
     void OnDestroy()
     {
-        // ¾×¼ÇÀ» ºñÈ°¼ºÈ­ÇÕ´Ï´Ù.
+        // ì•¡ì…˜ì„ ë¹„í™œì„±í™”í•©ë‹ˆë‹¤.
         spaceAction?.Disable();
+        escapeAction?.Disable();
     }
 }
