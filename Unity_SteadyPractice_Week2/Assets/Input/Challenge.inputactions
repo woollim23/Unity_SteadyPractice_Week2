@@ -1,0 +1,51 @@
+{
+    "name": "Challenge",
+    "maps": [
+        {
+            "name": "Challenge",
+            "id": "5dae37a5-159d-4876-8eba-4ece2efea881",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "03ad87be-e112-4d85-aaec-150acc4a607a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "acf5d23d-d8fe-4800-a9b9-59c3d234b3b6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyboardMouse",
+            "bindingGroup": "KeyboardMouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
