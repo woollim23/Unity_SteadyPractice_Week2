@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singletone<UIManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Debug.Log(GameManager.Instance);
+
+        GameManager.Instance.OnGameStart += OpenStartUI;
+        GameManager.Instance.OnGameEnd += OpenEndUI;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenStartUI()
     {
-        
+        Debug.Log(message: "GameStart");
+    }
+
+    public void OpenEndUI()
+    {
+        Debug.Log(message: "GameEnd");
     }
 }

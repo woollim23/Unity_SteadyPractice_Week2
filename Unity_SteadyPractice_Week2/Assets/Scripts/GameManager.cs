@@ -1,19 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singletone<GameManager>
 {
-    // 싱글톤
-    public static GameManager Instance;
-    void Awake()
-    {
-        // 초기화는 어웨이크에서
-        Instance = this;
-    }
+    public Action OnGameStart;
+    public Action OnGameEnd;
 
-    void Update()
+    private void Start()
     {
-        
+        UIManager.Instance.OpenEndUI();
     }
 }
