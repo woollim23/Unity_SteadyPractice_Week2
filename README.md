@@ -1,7 +1,8 @@
-스파르타코딩 꾸준실습 유니티 기록용 깃허브 입니다 (개발도구 : Unity, C#)
+스파르타코딩 꾸준실습 유니티 기록용 깃허브 입니다.
 
 ## ■ **Week2_Challenge**
 ### ○ 개발기간 : 2024-10-21 ~
+### ○ 개발도구 : Unity, C#
 ### ○ 구현 기능
 - Q1.  Input Rebinding
    - [구현사항 0] (완료) Input System을 import 하고, Input Action Challenge를 구성하세요.
