@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,8 @@ public class InputRebinder : MonoBehaviour
 
         // Space 액션 활성화
         spaceAction.Enable();
+        spaceAction.performed += OnSpacePressed;
+
     }
 
     // (완료) [구현사항 2] ContextMenu 어트리뷰트를 활용해서 인스펙터창에서 적용할 수 있도록 함
@@ -33,6 +36,14 @@ public class InputRebinder : MonoBehaviour
 
         // 액션 활성화
         escapeAction.Enable();
+    }
+
+    public void OnSpacePressed(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Debug.Log("Check_Space");
+        }
     }
 
     private void OnEscapePressed(InputAction.CallbackContext context)
