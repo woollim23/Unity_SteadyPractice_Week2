@@ -11,10 +11,11 @@ public class ObjectPool_2 : MonoBehaviour
     // 최소 50개의 오브젝트 수 보장,
     // 부족할 경우 누적 300개까지 추가 생성,
     // 300개가 넘어갈 경우 가장 오래전에 생성된 오브젝트를 반환 후 재사용
-    // TODO : Queue 사용해서 추가 생산해야 하나?
     private List<GameObject> pool;
     private const int minSize = 50;
     private const int maxSize = 300;
+    private int recentNum = 0;
+
     [SerializeField] private GameObject bulletPrefab;
 
     void Awake()
@@ -53,10 +54,13 @@ public class ObjectPool_2 : MonoBehaviour
             return newObject;
         }
 
-        // 최대 크기를 초과할 경우, 임시로 생성 후 반환
-        GameObject tempObject = CreateObject();
-        tempObject.SetActive(true);
-        return tempObject;
+        // 300개가 넘어갈 경우
+        // 가장 오래전에 생성된 오브젝트를 반환 후 재사용
+        if(recentNum == maxSize)
+            recentNum = 0;
+        ReleaseObject(pool[recentNum]);
+        pool[recentNum].SetActive(true);
+        return pool[recentNum++];
     }
 
     public void ReleaseObject(GameObject obj)
