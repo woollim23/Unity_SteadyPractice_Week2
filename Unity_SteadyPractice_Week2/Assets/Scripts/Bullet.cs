@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Pool;
 
 public class Bullet : MonoBehaviour
 {
@@ -11,9 +7,14 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if(this.transform.position.y > 5)
+        if (this.transform.position.y > 5)
         {
-            Destroy(this.gameObject);
+            if (ObjectPoolManager.Instance.pool == null)
+            {
+                Debug.LogError("ObjectPool is null!");
+                return;
+            }
+            ObjectPoolManager.Instance.pool.Release(this.gameObject);
         }
         this.transform.Translate(Vector2.up * this.speed * Time.deltaTime);
     }

@@ -9,6 +9,9 @@ using UnityEngine.InputSystem;
 
 public class InputRebinder : MonoBehaviour
 {
+    public float speed = 1f;
+    public Transform bulletSpawnPoint;
+
     public InputActionAsset actionAsset;
     private InputAction spaceAction;
     private InputAction escapeAction;
@@ -44,6 +47,10 @@ public class InputRebinder : MonoBehaviour
         {
             Debug.Log("Check_Space");
         }
+
+        var bulletGo = ObjectPoolManager.Instance.pool.Get();
+
+        bulletGo.transform.position = this.bulletSpawnPoint.position;
     }
 
     private void OnEscapePressed(InputAction.CallbackContext context)

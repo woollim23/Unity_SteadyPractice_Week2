@@ -397,8 +397,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2052050162}
   - component: {fileID: 2052050163}
-  - component: {fileID: 2052050164}
   - component: {fileID: 2052050161}
+  - component: {fileID: 2052050164}
   m_Layer: 0
   m_Name: Challenge
   m_TagString: Untagged
@@ -418,6 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608276e9a1de4a34bb941c9e6b2645ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  bulletSpawnPoint: {fileID: 250376376}
   actionAsset: {fileID: -944628639613478452, guid: 886a0ffa3e781d0439581caa60aade1c, type: 3}
 --- !u!4 &2052050162
 Transform:
@@ -496,43 +498,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2052050159}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: ea0c94f629a7cb34d9e9543277a31dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 886a0ffa3e781d0439581caa60aade1c, type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2052050161}
-        m_TargetAssemblyTypeName: InputRebinder, Assembly-CSharp
-        m_MethodName: OnSpace
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 03ad87be-e112-4d85-aaec-150acc4a607a
-    m_ActionName: Challenge/Space[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Challenge
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  bulletPrefab: {fileID: 1352792067832053084, guid: cd1adeec68f18a24fad0774113f2e075, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
