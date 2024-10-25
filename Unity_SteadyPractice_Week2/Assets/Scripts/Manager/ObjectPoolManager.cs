@@ -4,10 +4,14 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager : Singletone<ObjectPoolManager>
 {
+    // [구현 사항 4]
+    // 구현사항 1 응용
+    // UnityEngine.Pool을 활용하여 구현
+
     [SerializeField] private GameObject bulletPrefab;
 
-    private const int minSize = 50;
-    private const int maxSize = 300;
+    private const int minSize = 1;
+    private const int maxSize = 3;
 
     List<GameObject> tempObject;
     public IObjectPool<GameObject> pool { get; private set; }
@@ -25,8 +29,7 @@ public class ObjectPoolManager : Singletone<ObjectPoolManager>
         {
             GameObject obj = CreateObject();
 
-            if (pool != null)
-                pool.Release(obj);
+            pool.Release(obj);
         }
 
         // maxSize 이상의 오브젝트를 관리할 임시 리스트
@@ -60,9 +63,9 @@ public class ObjectPoolManager : Singletone<ObjectPoolManager>
     // 삭제
     private void DestroyPool(GameObject obj)
     {
-        Destroy(obj);
         if (tempObject.Contains(obj))
             tempObject.Remove(obj);
 
+        Destroy(obj);
     }
 }

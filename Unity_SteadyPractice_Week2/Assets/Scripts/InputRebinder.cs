@@ -43,11 +43,6 @@ public class InputRebinder : MonoBehaviour
 
     public void OnSpacePressed(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Debug.Log("Check_Space");
-        }
-
         var bulletGo = ObjectPoolManager.Instance.pool.Get();
 
         bulletGo.transform.position = this.bulletSpawnPoint.position;
