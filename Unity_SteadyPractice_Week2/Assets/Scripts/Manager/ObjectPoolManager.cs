@@ -10,8 +10,8 @@ public class ObjectPoolManager : Singletone<ObjectPoolManager>
 
     [SerializeField] private GameObject bulletPrefab;
 
-    private const int minSize = 1;
-    private const int maxSize = 3;
+    private const int minSize = 50;
+    private const int maxSize = 300;
 
     List<GameObject> tempObject;
     public IObjectPool<GameObject> pool { get; private set; }
